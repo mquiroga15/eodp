@@ -1,2 +1,2 @@
-# eodp
-MiSE EODP course repository
+# EODP
+MiSE Earth Observation Data Processing (EODP) repository.
