@@ -1,7 +1,7 @@
 # import required functions
 from common.io.writeToa import readToa
 from numpy import abs, mean, std
-
+import matplotlib.pyplot as plt
 # Load data from files
 toa0_ref = readToa(r"C:\EODP_all\EODP-TS-L1B\output", r"l1b_toa_VNIR-0.nc")
 toa0_own = readToa(r"C:\EODP_all\EODP-TS-L1B\myoutputs", r"l1b_toa_VNIR-0.nc")
@@ -47,23 +47,38 @@ else:
 
 if sig31 >= 0.0001:
     ok = False
-    print(f'FAIL: 3-sigma for channel 0 is {sig31:.5f}, expected less than 1e-4')
+    print(f'FAIL: 3-sigma for channel 1 is {sig31:.5f}, expected less than 1e-4')
 else:
-    print(f'PASS: 3-sigma for channel 0 is {sig31:.5f}')
+    print(f'PASS: 3-sigma for channel 1 is {sig31:.5f}')
 
 if sig32 >= 0.0001:
-    print(f'FAIL: 3-sigma for channel 0 is {sig32:.5f}, expected less than 1e-4')
+    print(f'FAIL: 3-sigma for channel 2 is {sig32:.5f}, expected less than 1e-4')
     ok = False
 else:
-    print(f'PASS: 3-sigma for channel 0 is {sig32:.5f}')
+    print(f'PASS: 3-sigma for channel 2 is {sig32:.5f}')
 
 if sig33 >= 0.0001:
-    print(f'FAIL: 3-sigma for channel 0 is {sig33:.5f}, expected less than 1e-4')
+    print(f'FAIL: 3-sigma for channel 3 is {sig33:.5f}, expected less than 1e-4')
     ok = False
 else:
-    print(f'PASS: 3-sigma for channel 0 is {sig33:.5f}')
+    print(f'PASS: 3-sigma for channel 3 is {sig33:.5f}')
 
 if ok:
     print(f'\nSUCCESS: all channels passed')
 else:
     print(f'ERROR: Some channels did not pass the test')
+
+
+# Plots to verify behaviour
+## No EQ, EQ & ISRF comparison -- channel 0 as examples
+isrf0 = readToa(r"C:\EODP_all\EODP-TS-ISM\output", r"ism_toa_isrf_VNIR-0.nc")
+toa0_neq = readToa(r"C:\EODP_all\EODP-TS-L1B\neq", r"l1b_toa_VNIR-0.nc")
+
+plt.plot(toa0_neq[50,:])
+plt.plot(toa0_own[50,:])
+plt.plot(isrf0[50,:])
+plt.grid()
+plt.legend(['Not equalised', 'Equalised', 'After ISRF'])
+plt.xlabel('ACT pixel (N/A)')
+plt.ylabel('TOA (mW m-2 sr-1)')
+plt.show()
