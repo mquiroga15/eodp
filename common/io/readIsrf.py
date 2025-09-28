@@ -3,7 +3,7 @@ import numpy as np
 
 def readIsrf(isrffile, b):
 
-    ncfile = isrffile + b + '.nc'
+    ncfile = isrffile + b + r'.nc'
     print('Reading ' + ncfile)
 
     # Load dataset

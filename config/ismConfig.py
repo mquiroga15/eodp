@@ -57,7 +57,7 @@ class ismConfig:
 
         # Auxiliary inputs (relative paths to the root folder)
         #--------------------------------------------------------------------------------
-        self.isrffile = 'isrf/ISRF_'
+        self.isrffile = r'isrf\ISRF_'
 
         # Flags to save intermediate outputs
         #--------------------------------------------------------------------------------

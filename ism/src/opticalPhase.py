@@ -105,6 +105,7 @@ class opticalPhase(initIsm):
         :return: TOA image in irradiances [mW/m2]
         """
         # TODO
+
         return toa_ft
 
     def spectralIntegration(self, sgm_toa, sgm_wv, band):
@@ -119,7 +120,7 @@ class opticalPhase(initIsm):
         # Read the ISRF and normalise it with its integral
         # ------------------------------------------------------------
         # wv in [um]
-        isrf, wv_isrf = readIsrf(self.auxdir + '/' + self.ismConfig.isrffile, band)
+        isrf, wv_isrf = readIsrf(self.auxdir + self.ismConfig.isrffile, band)
         isrf = isrf/np.sum(isrf) # normalize
         wv_isrf = wv_isrf * 1000 # micron to nm
 
