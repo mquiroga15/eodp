@@ -98,8 +98,8 @@ class mtf:
         fAlt = np.arange(-1 / (2 * w), 1 / (2 * w) - eps, fstepAlt)
         fAct = np.arange(-1 / (2 * w), 1 / (2 * w) - eps, fstepAct)
 
-        cutoff = D / lambd / focal
-        fnAlt = fAlt / cutoff
+        cutoff = D / ( lambd * focal)
+        fnAlt = fAlt * w
         fnAct = fAct * w
 
         [fnAltxx, fnActxx] = np.meshgrid(fnAlt, fnAct, indexing='ij')  # Please use ‘ij’ indexing or you will get the transpose
