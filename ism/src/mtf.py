@@ -166,6 +166,7 @@ class mtf:
         :return: Smearing MTF
         """
         #TODO
+        Hsmear = np.sinc(ksmear*fnAlt)
         return Hsmear
 
     def mtfMotion(self, fn2D, kmotion):
