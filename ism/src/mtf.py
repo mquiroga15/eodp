@@ -114,7 +114,7 @@ class mtf:
         :return: diffraction MTF
         """
         #TODO
-        Hdiff = 1 - fr2D
+        Hdiff = 2/np.pi * ( np.arccos(fr2D)-np.multiply(fr2D,np.sqrt(1-np.multiply(fr2D,fr2D))) )
         return Hdiff
 
 
