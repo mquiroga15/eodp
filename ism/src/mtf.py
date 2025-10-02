@@ -144,6 +144,7 @@ class mtf:
         :return: WFE Aberrations MTF
         """
         #TODO
+        Hwfe = np.exp( np.multiply(-fr2D, (1-fr2D)) * (kLF*(wLF/lambd)**2 + kHF*(wHF/lambd)**2) )
         return Hwfe
 
     def mtfDetector(self,fn2D):
