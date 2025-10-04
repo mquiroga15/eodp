@@ -201,5 +201,29 @@ class mtf:
         :return: N/A
         """
         #TODO
+        fig, axs = plt.subplots(1,2)
+        fig.suptitle(f"MTF for band {band}")
+        axs[0].plot(fnAct, Hsys[int(nlines / 2), :])
+        axs[0].plot(fnAct, Hdiff[int(nlines / 2), :])
+        axs[0].plot(fnAct, Hdefoc[int(nlines / 2), :])
+        axs[0].plot(fnAct, Hwfe[int(nlines / 2), :])
+        axs[0].plot(fnAct, Hdet[int(nlines / 2), :])
+        axs[0].plot(fnAct, Hsmear[int(nlines / 2), :])
+        axs[0].plot(fnAct, Hmotion[int(nlines / 2), :])
+        axs[0].set_xlim([0,0.5])
+        axs[0].grid()
+        axs[0].set(xlabel="f_act", ylabel="MTF")
+        axs[1].plot(fnAlt, Hsys[:,int(ncolumns/2)], label="System")
+        axs[1].plot(fnAlt, Hdiff[:,int(ncolumns/2)], label="Diffraction")
+        axs[1].plot(fnAlt, Hdefoc[:,int(ncolumns/2)], label="Defocus")
+        axs[1].plot(fnAlt, Hwfe[:,int(ncolumns/2)], label="WF Aberration")
+        axs[1].plot(fnAlt, Hdet[:,int(ncolumns/2)], label="Sampling")
+        axs[1].plot(fnAlt, Hsmear[:,int(ncolumns/2)], label="Smearing")
+        axs[1].plot(fnAlt, Hmotion[:,int(ncolumns/2)], label="Motion")
+        axs[1].legend()
+        axs[1].grid()
+        axs[1].set_xlim([0,0.5])
+        axs[1].set(xlabel="f_alt")
+        plt.show()
 
 
