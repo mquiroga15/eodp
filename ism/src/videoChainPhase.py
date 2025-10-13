@@ -70,6 +70,6 @@ class videoChainPhase(initIsm):
         """
         #TODO
         toa_dn = np.round(toa/(max_voltage-min_voltage)*(2**bit_depth - 1))
-        toa_dn = np.clip(toa_dn, 0, 2**bit_depth)
+        toa_dn = np.clip(toa_dn, 0, 2**bit_depth-1)
         return toa_dn
 
