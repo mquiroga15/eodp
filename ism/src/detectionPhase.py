@@ -105,10 +105,9 @@ class detectionPhase(initIsm):
         :return: Toa in photons
         """
         #TODO
-        e_in = area_pix * tint * 1e-3
-        e_ph = self.constants.h_planck * self.constants.speed_light / wv
-        toa_ph = toa * e_in / e_ph
-        print(f'Conversion factor irrad2Phot: {e_in/e_ph:.5f}')
+        conv = 1e-3 * area_pix * tint * wv / self.constants.h_planck / self.constants.speed_light
+        toa_ph = toa * conv
+        print(f'Conversion factor irrad2Phot: {conv:.5f}')
         return toa_ph
 
     def phot2Electr(self, toa, QE):
@@ -120,7 +119,7 @@ class detectionPhase(initIsm):
         """
         #TODO
         toae = toa * QE
-        toae[toae>self.ismConfig.FWC] = self.ismConfig.FWC
+        #toae[toae>self.ismConfig.FWC] = self.ismConfig.FWC
         print(f'Conversion factor phot2Electr: {QE:.5f}')
         return toae
 
